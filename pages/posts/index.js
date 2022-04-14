@@ -1,8 +1,8 @@
 import Layout from "../../sections/Layout"
-import Card from "../../components/Card"
+import InfiniteDataList from "../../components/InfiniteDataList"
 import faunaQueries from "../../lib/fauna"
 
-const posts = ({ data }) => {
+const posts = ({ initialData }) => {
   return (
     <Layout>
         <section className="pt-12 pb-16 text-center sm:pt-24">
@@ -10,9 +10,8 @@ const posts = ({ data }) => {
                 Blog Posts
             </h1>
         </section>
-        <div className="max-w-screen-lg gap-8 mx-auto gird sm:grid-cols-2">
-            {data.map(post => <Card key={post.id} {...post}/>)}
-        </div>
+        
+        <InfiniteDataList queryKey="/api/posts" initialData={initialData} />
     </Layout>
   )
 }
@@ -21,11 +20,11 @@ export default posts
 
 export async function getStaticProps() {
     try {
-        const {data} = await faunaQueries.getPosts()
+        const initialData = await faunaQueries.getPosts()
 
         return {
             props: {
-                data
+                data: initialData,
             },
             revalidate: 1,
         }

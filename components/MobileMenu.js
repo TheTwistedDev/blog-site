@@ -5,7 +5,7 @@ import { Logo } from './Logo'
 import { HiOutlineLogout, HiX } from 'react-icons/hi'
 
 const MobileMenu = ({ 
-    // links = [], 
+    links = [], 
     show = false, onClose = () => null }) => {
   const router = useRouter();
 

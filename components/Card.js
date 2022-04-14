@@ -22,7 +22,7 @@ const Card = props => (
             className="w-12 h-12 border-2 border-blue-600 rounded-full"
           />
           <div className="text-sm">
-            <p className="font-semibold">{props.author?.name}</p>
+            <p className="font-bold">{props.author?.name}</p>
             <p className="text-gray-500">
               {props.published
                 ? `Published on ${formatDate(props.published_at)}`
